@@ -17,13 +17,13 @@ $gameTime.addEventListener('input', setGameTime)
 
 class startGame {
     constructor($start, $game, $time, $result, $timeHeader, $resultHeader, $gameTime) {
-        this.$start = $start;
-        this.$game = $game;
+        this.$start = $start.addEventListener('click', this.startGame());
+        this.$game = $game.addEventListener('click', handleBoxClick());
         this.$time = $time;
         this.$result = $result;
         this.$timeHeader = $timeHeader;
         this.$resultHeader = $resultHeader;
-        this.$gameTime = $gameTime;
+        this.$gameTime = $gameTime.addEventListener('click', setGameTime());
     }
 
     show($el) {
@@ -53,8 +53,6 @@ class startGame {
             }
         }, 100);
     }
-
-
 
     setGameTime() {
         let time = +$gameTime.value;
